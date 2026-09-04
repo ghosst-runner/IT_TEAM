@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import * as THREE from "three";
 import { Canvas, useThree } from "@react-three/fiber";
-import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import { Room } from "./Room";
 import { Lights } from "./Lights";
 import { PixelCharacter } from "./PixelCharacter";
@@ -479,12 +478,6 @@ export function Scene({ mode, focus, focusNonce, selected, workMode, onSelectCha
       ))}
 
       <CameraController mode={mode} focus={focus} focusNonce={focusNonce} />
-
-      {/* постобработка: свечение неона и виньетка */}
-      <EffectComposer multisampling={2}>
-        <Bloom intensity={0.6} luminanceThreshold={0.85} luminanceSmoothing={0.25} mipmapBlur radius={0.72} />
-        <Vignette offset={0.22} darkness={0.72} />
-      </EffectComposer>
     </Canvas>
   );
 }
